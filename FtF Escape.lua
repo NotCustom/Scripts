@@ -23,6 +23,9 @@ uis.InputBegan:connect(function(input)
         if workspace:FindFirstChild("Abandoned Prison by AtomixKing and Duck_Ify") and beast == false then
             plr.Character.HumanoidRootPart.CFrame = CFrame.new(119.481964, 5.48816061, 249.139297)
         end
+        if workspace:FindFirstChild("Airport by deadlybones28") and beast == false then
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(271.6698, 5.10003901, 95.1082077)
+        end
     end
 end)
 print("Loaded! FtF Escape by Custom")
