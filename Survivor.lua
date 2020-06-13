@@ -6,7 +6,6 @@ yesasda = false
 PlayerTribe = "None"
 PlayerTribeNum = 0
 misc = workspace.Misc
-
 -- gui stuff
 
 local small = Instance.new("ScreenGui")
@@ -62,25 +61,18 @@ local label = Instance.new("TextLabel")
 local music = Instance.new("TextButton")
 local hiddenback = Instance.new("TextButton")
 local hiddenminimize = Instance.new("TextButton")
-local there = isfile("ShalltearData.txt")
-first = true
+local settingsfile = isfile("SCSettings.txt") -- new settings file, "original" was actually in an unreleased private update
 function start()
-	messagebox("Report any issues to Shalltear#8787 or Custom#5556","hi",0)
-    wait(1)
 	MainPage:TweenPosition(UDim2.new(0, 0, 0.286, 0),Enum.EasingDirection.InOut,Enum.EasingStyle.Quint, 1)
 	print("Credits:\nShalltear#8787 for gui design\nand Custom#5556 for coding stuff")
-end
-function file()
-	if not there then
-		writefile("ShalltearData.txt", "Hi\nThis file is where we'll store settings once we add them, so maybe dont delete it.\nThanks,\n	~~Shalltear & Custom")
-	else
-		first = false
+	if not settingsfile then
+		writefile("SCSettings.txt", "Settings coming soon!\n\n		~~Custom") -- more like, whenever I can get Shalltear to make the page
 	end
 end
 -- properties
 
-small.Name = "Shalltear"
-small.Parent = game:WaitForChild("CoreGui")
+small.Name = "sharply dressed demon girls" -- :sunglasses:
+small.Parent = game:WaitForChild("CoreGui") 
 small.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
 MainPage.Name = "MainPage"
@@ -601,6 +593,7 @@ extraback.BorderColor3 = Color3.fromRGB(255, 85, 0)
 extraback.Position = UDim2.new(0.855000019, 0, 0, 0)
 extraback.Size = UDim2.new(0, 26, 0, 26)
 extraback.Font = Enum.Font.SourceSans
+thefunnyword = "chocolate chip pancake recipe"
 extraback.Text = ""
 extraback.TextColor3 = Color3.fromRGB(0, 0, 0)
 extraback.TextSize = 14.000
@@ -682,7 +675,7 @@ local funnys = {
 	"a-ha",
 	"take on me",
 	"tax fraud",
-	"https://www.youtube.com/watch?v=GhclOjt7d2U",
+	"https://www.youtube.com/watch?v=GhclOjt7d2U", -- El Tigr3 - She Swallowed Burning Coals
 	"This isn't the first time Larry has been accused of something illegal, though, so we compiled a full list of every accusation against him.",
 	"the kaaba",
 	"that egg timer goes off im done for",
@@ -693,7 +686,21 @@ local funnys = {
 	"Helpful tip: people die when they are killed",
 	"'youre fricking exploiting'",
 	"01:20:45 AM - [kenzie_wenzi]: HOW DID HE KNOW\n01:20:52 AM - [kenzie_wenzi]: I DIDNT PULL OUT MY KNIFE",
-	"neutron"
+	"neutron",
+	"https://www.youtube.com/watch?v=mCikIkXslP0", -- Magic Sword - The Way Home
+	"I'm a Synapse X Customer. How will this affect me?\nSynapse X customers wont be able to benefit froom the uniqie skills of the Sentinel development team.",
+	"armenian genocide",
+	"i hate israel",
+	"we only support pyramid schemes if we're the ones making money",
+	"xue hua piao piao bei feng xiao xiao",
+	"https://www.youtube.com/watch?v=W8x4m-qpmJ8", -- Yi Jian Mei
+	"08:46:39 PM - [CaramelCake142]: Call me naomi :{\n08:46:43 PM - [PandaTheMatt]: no\n08:46:46 PM - [KnivescopeGames]: no\n08:46:48 PM - [CustomCoded]: no",
+	"cheemsborger",
+	"Lucifer, CEO of Hell",
+	"wide putin wide putin wide putin wide putin wide putin wide putin wide putin wide putin wide putin",
+	"tax evasion",
+	"cheese",
+	"pancake recipe"
 }
 uis.InputBegan:connect(function(input)
 	if input.KeyCode == Enum.KeyCode.LeftControl then
@@ -751,8 +758,8 @@ maincmds.MouseButton1Down:connect(function()
 	RealMainPage:TweenPosition(UDim2.new(0, 0, 0.286, 0),Enum.EasingDirection.InOut,Enum.EasingStyle.Quint,1)
 end)
 createdby.MouseButton1Down:connect(function()
-	randomfunny.Text = "Here's a secret: go to ??? and put in 'ST BF'. It's copied to your clipboard."
-	syn_clipboard_set("ST BF")
+	randomfunny.Text = "Here's a secret: go to ??? and put in '"..thefunnyword.."'. It's copied to your clipboard."
+	syn_clipboard_set(thefunnyword)
 	wait(5)
 	randomfunny.Text = funnys[math.random(#funnys)]
 end)
@@ -769,17 +776,35 @@ misc.MouseButton1Down:connect(function()
 	Extra:TweenPosition(UDim2.new(0, 0, 0.286, 0),Enum.EasingDirection.InOut,Enum.EasingStyle.Quint,1)
 end)
 -- hmm
+function csdmad()
+	hmmEnter.Text = ":csdmad:"
+	hmmCheck.Text = ":csdmad:"
+	hmmhmm.Text = ":csdmad:"
+	HmmPage.BackgroundColor3 = Color3.fromRGB(125,0,0)
+	HmmPage.BorderColor3 = Color3.fromRGB(125,0,0)
+	hmmhmm.TextColor3 = Color3.fromRGB(255,0,0)
+	hmmEnter.TextColor3 = Color3.fromRGB(255,0,0)
+	hmmCheck.TextColor3 = Color3.fromRGB(255,0,0)
+	hmmEnter.BackgroundTransparency = 1
+	hmmCheck.BackgroundTransparency = 1
+	wait(3.5)
+	HmmPage:TweenPosition(UDim2.new(-0.303, 0, 0.286, 0),Enum.EasingDirection.InOut,Enum.EasingStyle.Quint,1)
+	MainPage:TweenPosition(UDim2.new(0, 0, 0.286, 0),Enum.EasingDirection.InOut,Enum.EasingStyle.Quint,1)
+	secret:Destroy()
+	game:GetService("Debris"):AddItem(HmmPage,3)
+	Hidden:Destroy()
+end
 hmmCheck.MouseButton1Down:connect(function()
-    file()
-	if hmmEnter.Text == "ST BF" then
-	    messagebox("This update was rushed a bit so we'll fix issues soon, like maybe tomorrow","hi",0)
+	if hmmEnter.Text == thefunnyword then
 		HmmPage:TweenPosition(UDim2.new(-0.303, 0, 0.286, 0),Enum.EasingDirection.InOut,Enum.EasingStyle.Quint,1)
 		Hidden:TweenPosition(UDim2.new(0, 0, 0.286, 0),Enum.EasingDirection.InOut,Enum.EasingStyle.Quint,1)
+	else
+		csdmad() -- wow what funny
 	end
 end)
 -- oh?
 music.MouseButton1Down:connect(function()
-	if not workspace:FindFirstChild("Shalltear") then
+    if not workspace:FindFirstChild("Shalltear") then
 		local sh = Instance.new("Sound",workspace)
 		local sfx = plr.PlayerGui.NoReset.SFX
 		sh.Name = "Shalltear"
@@ -810,10 +835,12 @@ music.MouseButton1Down:connect(function()
     		                thems.Volume = 1
     		            end
     		        end
+    		    
     	    end
 		end
 	end
 end)
+
 -- Real Main Page
 zoom.MouseButton1Down:connect(function()
 	if plr.CameraMaxZoomDistance == 400 then
@@ -854,23 +881,47 @@ tp.MouseButton1Down:connect(function()
 	end]]--
 end)
 coins.MouseButton1Down:connect(function()
-	local Coinsx = {}
-	for i, v in pairs(Misc:GetDescendants())do
-		if v.Name == "Coin" then
-			table.insert(Coinsx,v)
+	if yesasda == false then
+		yesasda = true
+		local Coinsx = {}
+		for i, v in pairs(Misc:GetDescendants())do
+			if v.Name == "Coin" then
+				table.insert(Coinsx,v)
+			end
+		end
+		for i, v in pairs(Coinsx) do
+			if v.Transparency < 0.9 then
+			Char.HumanoidRootPart.CFrame = v.CFrame + Vector3.new(15,10,15)
+			wait(1)
+			Char.Humanoid:MoveTo(v.CFrame.p)
+			wait(2)
+			end
 		end
 	end
-	for i, v in pairs(Coinsx) do
-		if v.Transparency < 0.9 then
-		Char.HumanoidRootPart.CFrame = v.CFrame + Vector3.new(15,10,15)
-		wait(1)
-		Char.Humanoid:MoveTo(v.CFrame.p)
-		wait(2)
-		end
+	if yesasda == true then
+		yesasda = false
 	end
 end)
 
 -- Challenges Page
+init.MouseButton1Down:connect(function()
+	local MyTeam = plr.Team
+	local GameData = game.ReplicatedStorage.GameData
+	local Tribe1 = GameData.Tribe1Name
+	local Tribe2 = GameData.Tribe2Name
+	local TribeName = MyTeam.Name
+	local TribeNum = 0
+	PlayerTribe = MyTeam.Name
+	print("Tribe : "..MyTeam.Name)
+	if MyTeam.Name == Tribe1.Value then
+		TribeNum = 1
+		PlayerTribeNum = 1
+	elseif MyTeam.Name == Tribe2.Value then
+		TribeNum = 2
+		PlayerTribeNum = 2
+	end
+	print("Num : "..tostring(TribeNum))
+end)
 -- * Solo Challenges *
 getagrip.MouseButton1Down:connect(function()
 	plr.PlayerGui.GUIs.Center.GetAGrip:Destroy()
