@@ -700,7 +700,8 @@ local funnys = {
 	"wide putin wide putin wide putin wide putin wide putin wide putin wide putin wide putin wide putin",
 	"tax evasion",
 	"cheese",
-	"pancake recipe"
+	"pancake recipe",
+	"give me the eggs"
 }
 uis.InputBegan:connect(function(input)
 	if input.KeyCode == Enum.KeyCode.LeftControl then
