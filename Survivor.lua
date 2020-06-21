@@ -64,9 +64,8 @@ local hiddenminimize = Instance.new("TextButton")
 local settingsfile = isfile("SCSettings.txt") -- new settings file, "original" was actually in an unreleased private update
 function start()
 	MainPage:TweenPosition(UDim2.new(0, 0, 0.286, 0),Enum.EasingDirection.InOut,Enum.EasingStyle.Quint, 1)
-	print("Credits:\nShalltear#8787 for gui design\nand Custom#5556 for coding stuff")
 	if not settingsfile then
-		writefile("SCSettings.txt", "Settings coming soon!\n\n		~~Custom") -- more like, whenever I can get Shalltear to make the page
+		writefile("SCSettings.txt", "Settings coming soon!\n\n		~~Custom") -- more like, whenever I can get the page made
 	end
 end
 -- properties
