@@ -41,7 +41,7 @@ uis.InputBegan:connect(function(input)
             workspace["Hedge Way Out"].hedges:Destroy()
         end
         if workspace:FindFirstChild("Lane Jumping") then
-            workspace["Lane Jumping"].carspawns:Destroy()
+            topos(59.0051155, 72.0980911, 123.205139)
         end
         if workspace:FindFirstChild("Lava Forecast") then
         	topos(-99.1484222, 66.4740677, -21.999424)
@@ -116,7 +116,12 @@ uis.InputBegan:connect(function(input)
         	topos(-32.4165611, -100.058777, -52.3167686)
         end
         if workspace:FindFirstChild("Crystal Clear") then
-            
+            -- setup for until I can get a better look at the map tomorrow
+            local crys = workspace["Crystal Clear"].ogems
+            local hasgem = false
+            repeat
+                
+            until hasgem == true
         end
     end
 end)
