@@ -1,7 +1,8 @@
--- Listened to The Way Home by Magic Sword while making this
--- Ignore the notes to myself in places
+-- got called a femboy in the discord vc today :pensive:
+-- worst thing to ever happen to me
 uis = game:GetService("UserInputService")
 plr = game.Players.LocalPlayer
+NEW = require(game:GetService("ReplicatedStorage").LoadLibrary.RbxUtility).Create -- roblox removed LoadLibrary but luckily its added in game
 function topos(x,y,z)
     plr.Character.HumanoidRootPart.CFrame = CFrame.new(x,y,z)
     -- existence made easier!
@@ -116,12 +117,23 @@ uis.InputBegan:connect(function(input)
         	topos(-32.4165611, -100.058777, -52.3167686)
         end
         if workspace:FindFirstChild("Crystal Clear") then
-            -- setup for until I can get a better look at the map tomorrow
-            local crys = workspace["Crystal Clear"].ogems
+            local igems = workspace["Crystal Clear"].igems
             local hasgem = false
-            repeat
-                
-            until hasgem == true
+            igems.ChildAdded:connect(function(child)
+                if hasgem == false then
+                   plr.Character.HumanoidRootPart.CFrame = child.CFrame
+                   hasgem = true
+                end
+            end)
+        end
+        if workspace:FindFirstChild("Skewer Shuffle") then
+            workspace["Skewer Shuffle"].Spike:Destroy()
+        end
+        if workspace:FindFirstChild("The Sweeper") then
+            workspace["The Sweeper"].sweeper:Destroy()
+        end
+        if workspace:FindFirstChild("Revolution Cube") then
+            -- placeholder
         end
     end
 end)
