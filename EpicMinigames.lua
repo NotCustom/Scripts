@@ -91,23 +91,23 @@ uis.InputBegan:connect(function(input)
         if workspace:FindFirstChild("Block Hunt") then
             local blue = workspace["Block Hunt"]:FindFirstChild("DroppedBlueBlocks")
             local red = workspace["Block Hunt"]:FindFirstChild("DroppedRedBlocks")
-            local blue = false
-            local red = false
-            if plr.Character:FindFirstChild("RedBlock") and red == false and blue == false then
+            local isblue = false
+            local isred = false
+            if plr.Character:FindFirstChild("RedBlock") and isred == false and isblue == false then
                 red = true
                 ping("Modeus' BlockHunt","Wait for hunting to start and press Q")
             end
-            if plr.Character:FindFirstChild("BlueBlock") and red == false and blue == false then
+            if plr.Character:FindFirstChild("BlueBlock") and isred == false and isblue == false then
                 blue = true
                 ping("Modeus' BlockHunt","Wait for hunting to start and press Q")
             end
-            if red == true and blue == false then
+            if isred == true and isblue == false then
                 local bluechildren = blue:GetChildren()
                 for _,blues in pairs(bluechildren) do
                    blues.CFrame = plr.Character.HumanoidRootPart.CFrame 
                 end
             end
-            if red == false and blue == true then
+            if isred == false and isblue == true then
                 local redchildren = red:GetChildren()
                 for _,reds in pairs(redchildren) do
                    reds.CFrame = plr.Character.HumanoidRootPart.CFrame 
