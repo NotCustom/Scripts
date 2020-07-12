@@ -94,11 +94,11 @@ uis.InputBegan:connect(function(input)
             local isblue = false
             local isred = false
             if plr.Character:FindFirstChild("RedBlock") and isred == false and isblue == false then
-                red = true
+                isred = true
                 ping("Modeus' BlockHunt","Wait for hunting to start and press Q")
             end
             if plr.Character:FindFirstChild("BlueBlock") and isred == false and isblue == false then
-                blue = true
+                isblue = true
                 ping("Modeus' BlockHunt","Wait for hunting to start and press Q")
             end
             if isred == true and isblue == false then
