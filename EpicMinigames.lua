@@ -2,7 +2,8 @@
 -- worst thing to ever happen to me
 uis = game:GetService("UserInputService")
 plr = game.Players.LocalPlayer
-NEW = require(game:GetService("ReplicatedStorage").LoadLibrary.RbxUtility).Create -- roblox removed LoadLibrary but luckily its added in game
+NEW = require(game:GetService("ReplicatedStorage").LoadLibrary.RbxUtility).Create
+-- ^ parent parts to minigame map so it gets removed with map
 function topos(x,y,z)
     plr.Character.HumanoidRootPart.CFrame = CFrame.new(x,y,z)
     -- existence made easier!
@@ -133,7 +134,44 @@ uis.InputBegan:connect(function(input)
             workspace["The Sweeper"].sweeper:Destroy()
         end
         if workspace:FindFirstChild("Revolution Cube") then
-            -- placeholder
+            NEW'Part'{Parent = workspace["Revolution Cube"],Name = "PLATFORM",Size = Vector3.new(17,1,17),Position = CFrame.new()}
+        end
+        if workspace:FindFirstChild("Just Jump") then
+           workspace["Just Jump"].map.rope:Destroy() 
+        end
+        if workspace:FindFirstChild("The Crusher") then
+            NEW'Part'{Parent = workspace["The Crusher"],Name = "Platform",Size = Vector3.new(17,1,17),Position = CFrame.new(19.6044769, 98.766319, -128.549683)} 
+        end
+        if workspace:FindFirstChild("Uncertain Ground") then
+            NEW'Part'{Parent = workspace["Uncertain Ground"],Name = "Platform",Size = Vector3.new(17,1,17),Position = CFrame.new(19.6044769, 98.766319, -128.549683)}
+            topos(19.6044769, 98.766319, -128.549683)
+        end
+        if workspace:FindFirstChild("Cake Delivery") then
+            -- no clue if this works
+            cakenum = ""
+            for _,stuffs in pairs(plr.Character:GetChildren()) do
+                if stuffs:IsA("Tool") then
+                    cakenum = stuffs.Name
+                    toolhandle = stuffs.Handle
+                end
+            end
+            wait(1)
+            for _,map in pairs(workspace["Cake Delivery"]:GetChildren()) do
+                if map:IsA("Part") then
+                    for _,nums in pairs(map:GetChildren()) do
+                        if nums:IsA("SurfaceGui") then
+                            local txt = nums.TextLabel.Text
+                            if string.match(txt,cakenum) then
+                                toolhandle.CFrame = nums.Parent.CFrame
+                            end
+                        end
+                    end
+                end
+            end
+        end
+        if workspace:FindFirstChild("Four Corners") then
+            NEW'Part'{Parent = workspace['Four Corners'],Name = 'PLATFORM',Size = Vector3.new(17,1,17),Position = CFrame.new()}
+            -- WIP
         end
     end
 end)
