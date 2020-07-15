@@ -1,5 +1,5 @@
--- got called a femboy in the discord vc today :pensive:
--- worst thing to ever happen to me
+-- 09:20:15 PM - [itsMechronicalMega]: sowwy custom~kun...
+-- please never call me this again
 uis = game:GetService("UserInputService")
 plr = game.Players.LocalPlayer
 NEW = require(game:GetService("ReplicatedStorage").LoadLibrary.RbxUtility).Create
@@ -27,7 +27,7 @@ uis.InputBegan:connect(function(input)
                 end
             end
         end
-        if workspace:FindFirstChild("One Way Out") then
+        if workspace:FindFirstChild("Only One Path") then
             topos(28.2, 85.8, -0.1)
         end
         if workspace:FindFirstChild("Turntable Scurry") then
@@ -88,32 +88,6 @@ uis.InputBegan:connect(function(input)
            	    
            	end
         end
-        if workspace:FindFirstChild("Block Hunt") then
-            local blue = workspace["Block Hunt"]:FindFirstChild("DroppedBlueBlocks")
-            local red = workspace["Block Hunt"]:FindFirstChild("DroppedRedBlocks")
-            local isblue = false
-            local isred = false
-            if plr.Character:FindFirstChild("RedBlock") and isred == false and isblue == false then
-                isred = true
-                ping("Modeus' BlockHunt","Wait for hunting to start and press Q")
-            end
-            if plr.Character:FindFirstChild("BlueBlock") and isred == false and isblue == false then
-                isblue = true
-                ping("Modeus' BlockHunt","Wait for hunting to start and press Q")
-            end
-            if isred == true and isblue == false then
-                local bluechildren = blue:GetChildren()
-                for _,blues in pairs(bluechildren) do
-                   blues.CFrame = plr.Character.HumanoidRootPart.CFrame 
-                end
-            end
-            if isred == false and isblue == true then
-                local redchildren = red:GetChildren()
-                for _,reds in pairs(redchildren) do
-                   reds.CFrame = plr.Character.HumanoidRootPart.CFrame 
-                end
-            end
-        end
         if workspace:FindFirstChild("The Crusher") then
         	topos(-32.4165611, -100.058777, -52.3167686)
         end
@@ -134,20 +108,18 @@ uis.InputBegan:connect(function(input)
             workspace["The Sweeper"].sweeper:Destroy()
         end
         if workspace:FindFirstChild("Revolution Cube") then
-            NEW'Part'{Parent = workspace["Revolution Cube"],Name = "PLATFORM",Size = Vector3.new(17,1,17),Position = CFrame.new()}
+            NEW'Part'{Parent = workspace["Revolution Cube"],Name = "PLATFORM",Size = Vector3.new(17,1,17),Position = Vector3.new(),Anchored = true}
         end
         if workspace:FindFirstChild("Just Jump") then
            workspace["Just Jump"].map.rope:Destroy() 
         end
-        if workspace:FindFirstChild("The Crusher") then
-            NEW'Part'{Parent = workspace["The Crusher"],Name = "Platform",Size = Vector3.new(17,1,17),Position = CFrame.new(19.6044769, 98.766319, -128.549683)} 
-        end
         if workspace:FindFirstChild("Uncertain Ground") then
-            NEW'Part'{Parent = workspace["Uncertain Ground"],Name = "Platform",Size = Vector3.new(17,1,17),Position = CFrame.new(19.6044769, 98.766319, -128.549683)}
+            NEW'Part'{Parent = workspace["Uncertain Ground"],Name = "Platform",Size = Vector3.new(17,1,17),Position = Vector3.new(19.6044769, 98.766319, -128.549683),Anchored = true}
             topos(19.6044769, 98.766319, -128.549683)
         end
         if workspace:FindFirstChild("Cake Delivery") then
             -- no clue if this works
+            -- nope, doesnt
             cakenum = ""
             for _,stuffs in pairs(plr.Character:GetChildren()) do
                 if stuffs:IsA("Tool") then
@@ -172,6 +144,21 @@ uis.InputBegan:connect(function(input)
         if workspace:FindFirstChild("Four Corners") then
             NEW'Part'{Parent = workspace['Four Corners'],Name = 'PLATFORM',Size = Vector3.new(17,1,17),Position = CFrame.new()}
             -- WIP
+        end
+        if workspace:FindFirstChild("Teamwork Trial") then
+            topos()
+        end
+        if workspace:FindFirstChild("Avalanche") then
+            topos(-12.3015432, 37.4725342, -183.86824)
+        end
+        if workspace:FindFirstChild("Pyre Pit") then
+            topos(15.9796066, 60.8599358, 1.58988118)
+        end
+        if workspace:FindFirstChild("Compactor Crash") then
+            workspace["Compactor Crash"].crusher:Destroy()
+        end
+        if workspace:FindFirstChild("Hard-Pressed") then
+            workspace["Hard-Pressed"].map.presses:Destroy()
         end
     end
 end)
