@@ -26,9 +26,8 @@ function update()
         end
     end
 end
-uis.InputBegan:connect(function(input) -- less atrocious coding
+uis.InputBegan:connect(function(input)
     if input.KeyCode == Enum.KeyCode[Key] then
-        -- for some reason only 5 get highlighted even though theres 6 ??
         local map = FACILITY_0 or ABANDONED_PRISON or ABANDONED_FACILITY or AIRPORT or HOMESTEAD
         if map then
             for _,stuffs in pairs(map:GetChildren()) do
