@@ -5,9 +5,8 @@ uis = game:GetService("UserInputService")
 -- YES YOU CAN CUSTOMIZE IT
 -- SOMETHING EVERYONE WANTS
 ONKEY = "Q" -- no spaces if its something like "LeftControl"
-OFFKEY = "R"
-BeastHighlight = "200,0,0"
-SurvivorHighlight = "0,200,0"
+BeastHighlight = Color3.fromRGB(200,0,0)
+SurvivorHighlight = Color3.fromRGB(0,200,0)
 HighlightTransparency = 0.5
 -- actual functions
 
@@ -30,7 +29,7 @@ uis.InputBegan:connect(function(input)
                                 highlight.ZIndex = 10
                                 highlight.AlwaysOnTop = true
                                 highlight.Size = limbs.Size
-                                highlight.Color = BrickColor.new(BeastHighlight)
+                                highlight.Color3 = BeastHighlight
                                 highlight.Transparency = HighlightTransparency
                             end
                         end
@@ -39,7 +38,7 @@ uis.InputBegan:connect(function(input)
                         bboard.Size = UDim2.new(0,100,0,150)
                         bboard.StudsOffset = Vector3.new(0,1,0)
                         bboard.AlwaysOnTop = true
-				        tag.BackgroundTransparency = 1
+		                tag.BackgroundTransparency = 1
         				tag.Position = UDim2.new(0, 0, 0, -50)
         				tag.Size = UDim2.new(0, 100, 0, 100)
         				tag.Font = Enum.Font.SourceSansSemibold
@@ -66,7 +65,7 @@ uis.InputBegan:connect(function(input)
                                 highlight.ZIndex = 10
                                 highlight.AlwaysOnTop = true
                                 highlight.Size = limbs.Size
-                                highlight.Color = BrickColor.new(SurvivorHighlight)
+                                highlight.Color3 = SurvivorHighlight
                                 highlight.Transparency = HighlightTransparency
                             end
                         end
@@ -89,10 +88,13 @@ uis.InputBegan:connect(function(input)
             end
         end
     end
-    if input.KeyCode == Enum.KeyCode[OFFKEY] then
-        for _,ohgodpleasenotagain in pairs(game.Players:GetChildren()) do
-            if ohgodpleasenotagain.Character:FindFirstChild("MDSHighlight") then
-                ohgodpleasenotagain.Character.MDSHighlight:Destroy()
+end)
+game.ReplicatedStorage.IsGameActive.Changed:connect(function(value)
+    if value == false then
+        for _,peoples in pairs(game.Players:GetChildren()) do
+            if peoples.Character:FindFirstChild("MDSHighlight") then
+                peoples.Character.MDSHighlight:Destroy()
+                -- finally !
             end
         end
     end
