@@ -26,15 +26,23 @@ uis.InputBegan:connect(function(input)
                     child:Destroy()
                 end
             end
+            --plr.Character.HumanoidRootPart.CFrame = mine[""].CFrame - CFrame.new(4,0,0)
         end
         if workspace:FindFirstChild("Only One Path") then
-            topos(28.2, 85.8, -0.1)
+            if workspace["Only One Path"].mapn.Value == "" then
+                topos(28.2, 85.8, -0.1)
+            end
+            if workspace["Only One Path"].mapn.Value == "Ritual" then
+                
+            end
         end
         if workspace:FindFirstChild("Turntable Scurry") then
             topos(0, 115.4, 0)
         end
         if workspace:FindFirstChild("Expedition Sprint") then
-            topos(50.0934715, 255.104126, -5.76367521)
+            if workspace["Expedition Sprint"].mapn.Value == "High Peak" then
+                topos(50.0934715, 255.104126, -5.76367521)
+            end
         end
         if workspace:FindFirstChild("Compactor Crash") then
             topos(51.5406075, 95.1099854, -46.3891144)
@@ -108,7 +116,8 @@ uis.InputBegan:connect(function(input)
             workspace["The Sweeper"].sweeper:Destroy()
         end
         if workspace:FindFirstChild("Revolution Cube") then
-            NEW'Part'{Parent = workspace["Revolution Cube"],Name = "PLATFORM",Size = Vector3.new(17,1,17),Position = Vector3.new(),Anchored = true}
+            NEW'Part'{Parent = workspace["Revolution Cube"],Name = "PLATFORM",Size = Vector3.new(17,1,17),Position = Vector3.new(129.284, 114.654, -946.287),Anchored = true}
+            topos(129.284, 116.654, -946.287)
         end
         if workspace:FindFirstChild("Just Jump") then
            workspace["Just Jump"].map.rope:Destroy() 
@@ -118,35 +127,15 @@ uis.InputBegan:connect(function(input)
             topos(19.6044769, 98.766319, -128.549683)
         end
         if workspace:FindFirstChild("Cake Delivery") then
-            -- no clue if this works
-            -- nope, doesnt
-            cakenum = ""
-            for _,stuffs in pairs(plr.Character:GetChildren()) do
-                if stuffs:IsA("Tool") then
-                    cakenum = stuffs.Name
-                    toolhandle = stuffs.Handle
-                end
-            end
-            wait(1)
-            for _,map in pairs(workspace["Cake Delivery"]:GetChildren()) do
-                if map:IsA("Part") then
-                    for _,nums in pairs(map:GetChildren()) do
-                        if nums:IsA("SurfaceGui") then
-                            local txt = nums.TextLabel.Text
-                            if string.match(txt,cakenum) then
-                                toolhandle.CFrame = nums.Parent.CFrame
-                            end
-                        end
-                    end
-                end
-            end
+            -- i hate having to try and make this work
         end
         if workspace:FindFirstChild("Four Corners") then
-            NEW'Part'{Parent = workspace['Four Corners'],Name = 'PLATFORM',Size = Vector3.new(17,1,17),Position = CFrame.new()}
-            -- WIP
+            NEW'Part'{Parent = workspace['Four Corners'],Name = 'PLATFORM',Size = Vector3.new(17,1,17),Position = Vector3.new(),Anchored = true}
+            -- position also needed here 
         end
         if workspace:FindFirstChild("Teamwork Trial") then
             topos()
+            -- kinda need position doe
         end
         if workspace:FindFirstChild("Avalanche") then
             topos(-12.3015432, 37.4725342, -183.86824)
@@ -159,6 +148,56 @@ uis.InputBegan:connect(function(input)
         end
         if workspace:FindFirstChild("Hard-Pressed") then
             workspace["Hard-Pressed"].map.presses:Destroy()
+        end
+        if workspace:FindFirstChild("Romper Stomper") then
+            if not string.match(workspace.notification.Value,plr.Name) then
+                topos(156.021225, 43, -200.100769)
+            end
+        end
+        if workspace:FindFirstChild("Mechanical Mayhem") then
+            workspace["Mechanical Mayhem"].map.cogs.mainspinner:Destroy()
+        end
+        if workspace:FindFirstChild("Cliffside Chaos") then
+            topos(8.58114815, 293.600891, -38.3512726)
+        end
+        if workspace:FindFirstChild("Block Hunt") then
+            -- if this could be tested that'd be pretty pogchamp
+            local redblocks = workspace["Block Hunt"].DroppedRedBlocks
+            local blueblocks = workspace["Block Hunt"].DroppedBlueBlocks
+            local isblue = false
+            local isred = false
+            if plr.Character:FindFirstChild("RedBlock") and (isred == false and isblue == false) then
+                isred = true
+            elseif plr.Character:FindFirstChild("BlueBlock") and (isred == false and isblue == false) then
+                isblue = true
+            end
+            if isblue == true then
+                for _,blues in pairs(blueblocks:GetChildren()) do
+                    if not blues:FindFirstChild("MDSHighlight") then
+                        local highlight = Instance.new("BoxHandleAdornment",blues)
+                        highlight.Name = "MDSHighlight"
+                        highlight.Adornee = blues
+                        highlight.ZIndex = 10
+                        highlight.AlwaysOnTop = true
+                        highlight.Size = blues.Size
+                        highlight.Color3 = Color3.new(0,0,255)
+                        highlight.Transparency = 0
+                    end
+                end
+            else
+                for _,reds in pairs(redblocks:GetChildren()) do
+                    if not reds:FindFirstChild("MDSHighlight") then
+                        local highlight = Instance.new("BoxHandleAdornment",blues)
+                        highlight.Name = "MDSHighlight"
+                        highlight.Adornee = reds
+                        highlight.ZIndex = 10
+                        highlight.AlwaysOnTop = true
+                        highlight.Size = reds.Size
+                        highlight.Color3 = Color3.new(255,0,0)
+                        highlight.Transparency = 0
+                    end
+                end
+            end
         end
     end
 end)
