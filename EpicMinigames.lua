@@ -161,41 +161,32 @@ uis.InputBegan:connect(function(input)
             topos(8.58114815, 293.600891, -38.3512726)
         end
         if workspace:FindFirstChild("Block Hunt") then
-            -- if this could be tested that'd be pretty pogchamp
+            -- i just tossed the entire original idea out the window and went with this
+            -- really wish i had a decent method of determining team
             local redblocks = workspace["Block Hunt"].DroppedRedBlocks
             local blueblocks = workspace["Block Hunt"].DroppedBlueBlocks
-            local isblue = false
-            local isred = false
-            if plr.Character:FindFirstChild("RedBlock") and (isred == false and isblue == false) then
-                isred = true
-            elseif plr.Character:FindFirstChild("BlueBlock") and (isred == false and isblue == false) then
-                isblue = true
-            end
-            if isblue == true then
-                for _,blues in pairs(blueblocks:GetChildren()) do
-                    if not blues:FindFirstChild("MDSHighlight") then
-                        local highlight = Instance.new("BoxHandleAdornment",blues)
-                        highlight.Name = "MDSHighlight"
-                        highlight.Adornee = blues
-                        highlight.ZIndex = 10
-                        highlight.AlwaysOnTop = true
-                        highlight.Size = blues.Size
-                        highlight.Color3 = Color3.new(0,0,255)
-                        highlight.Transparency = 0
-                    end
+            for _,reds in pairs(redblocks:GetChildren()) do
+                if not reds:FindFirstChild("MDSHighlight") then
+                    local highlight = Instance.new("BoxHandleAdornment",reds)
+                    highlight.Name = "MDSHighlight"
+                    highlight.Adornee = reds
+                    highlight.ZIndex = 10
+                    highlight.AlwaysOnTop = true
+                    highlight.Size = reds.Size
+                    highlight.Color3 = Color3.new(255,0,0)
+                    highlight.Transparency = 0
                 end
-            else
-                for _,reds in pairs(redblocks:GetChildren()) do
-                    if not reds:FindFirstChild("MDSHighlight") then
-                        local highlight = Instance.new("BoxHandleAdornment",blues)
-                        highlight.Name = "MDSHighlight"
-                        highlight.Adornee = reds
-                        highlight.ZIndex = 10
-                        highlight.AlwaysOnTop = true
-                        highlight.Size = reds.Size
-                        highlight.Color3 = Color3.new(255,0,0)
-                        highlight.Transparency = 0
-                    end
+            end
+            for _,blues in pairs(blueblocks:GetChildren()) do
+                if not blues:FindFirstChild("MDSHighlight") then
+                    local highlight = Instance.new("BoxHandleAdornment",blues)
+                    highlight.Name = "MDSHighlight"
+                    highlight.Adornee = blues
+                    highlight.ZIndex = 10
+                    highlight.AlwaysOnTop = true
+                    highlight.Size = blues.Size
+                    highlight.Color3 = Color3.new(0,0,255)
+                    highlight.Transparency = 0
                 end
             end
         end
