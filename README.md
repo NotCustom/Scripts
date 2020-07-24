@@ -2,4 +2,4 @@ welcome to hell
 
 population: us
 
-Organisation coming eventually
+feel free to contribute edits
