@@ -1,10 +1,10 @@
 msg = {
-["content"] = _G.message,
+["content"] = "YOURMESSAGE",
 }
 
 local response = syn.request(
 {
-Url = _G.link,
+Url = "DISCORDWEBHOOKLINK",
 Method = "POST",
 Headers = {
 ["Content-Type"] = "application/json"
