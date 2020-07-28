@@ -34,7 +34,6 @@ uis.InputBegan:connect(function(input)
                 end
             end
         end
-        topart(workspace["Manic Mining"].emerald,Vector3.new(4,0,0))
         if workspace:FindFirstChild("Only One Path") then
             if workspace["Only One Path"].mapn.Value == "" then
                 topos(28.2, 85.8, -0.1)
@@ -135,7 +134,7 @@ uis.InputBegan:connect(function(input)
             topos(-12.3369036, 72.0999985, -20.2035656)
         end
         if workspace:FindFirstChild("Teamwork Trial") then
-            -- sadchamp
+            topart(workspace["Teamwork Trial"].goal) -- finally
         end
         if workspace:FindFirstChild("Avalanche") then
             workspace.Avalanche.ChildAdded:connect(function(child)
@@ -244,7 +243,15 @@ uis.InputBegan:connect(function(input)
             workspace["Conveyor Conundrum"].obsts.ChildAdded:connect(function(child)
                 child:Destroy()
             end)
-            -- what
+        end
+        if workspace:FindFirstChild("Crumble Island") then
+            if workspace["Crumble Island"].mapn.Value == "Candylands" then
+                NEW'Part'{Name = "PLATFORM",Parent = workspace["Crumble Island"],Size = Vector3.new(17,1,17),Position = Vector3.new(52.658844, 45.5821228, -50.265358),Anchored = true}
+                topos(52.658844, 48.5821228, -50.265358)
+            end
+        end
+        if workspace:FindFirstChild("") then
+            -- template
         end
     end
 end)
