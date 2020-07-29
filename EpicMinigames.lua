@@ -85,16 +85,7 @@ uis.InputBegan:connect(function(input)
             workspace["Laser Guidance"].hlaser:Destroy()
         end
         if workspace:FindFirstChild("Trial Traversing") then
-            topos(54.3476906, 155.750671, 882.103394) -- which is this???
-            if workspace["Trial Traversing"].mapn.Value == "Simulation" then
-            	topos(41.0362206, 82.1999283, -30.3597031)
-           	end
-           	if workspace["Trial Traversing"].mapn.Value == "" then
-           		topos(42.2373924, 93.0999756, -40.1501465)
-           	end
-           	if workspace["Trial Traversing"].mapn.Value == "Lavascape" then
-           	    
-           	end
+            topart(workspace["Trial Traversing"].Goal.Goal)
         end
         if workspace:FindFirstChild("The Crusher") then
         	topos(-32.4165611, -100.058777, -52.3167686)
@@ -164,47 +155,26 @@ uis.InputBegan:connect(function(input)
             topos(8.58114815, 293.600891, -38.3512726)
         end
         if workspace:FindFirstChild("Block Hunt") then
-            -- i just tossed the entire original idea out the window and went with this
-            -- really wish i had a decent method of determining team
+            -- please let this be the final version of this one
             local redblocks = workspace["Block Hunt"].DroppedRedBlocks
             local blueblocks = workspace["Block Hunt"].DroppedBlueBlocks
-            for _,reds in pairs(redblocks:GetChildren()) do
-                if not reds:FindFirstChild("MDSHighlight") then
-                    local highlight = Instance.new("BoxHandleAdornment",reds)
-                    highlight.Name = "MDSHighlight"
-                    highlight.Adornee = reds
-                    highlight.ZIndex = 10
-                    highlight.AlwaysOnTop = true
-                    highlight.Size = reds.Size
-                    highlight.Color3 = Color3.new(255,0,0)
-                    highlight.Transparency = 0
-                end
-            end
             for _,blues in pairs(blueblocks:GetChildren()) do
-                if not blues:FindFirstChild("MDSHighlight") then
-                    local highlight = Instance.new("BoxHandleAdornment",blues)
-                    highlight.Name = "MDSHighlight"
-                    highlight.Adornee = blues
-                    highlight.ZIndex = 10
-                    highlight.AlwaysOnTop = true
-                    highlight.Size = blues.Size
-                    highlight.Color3 = Color3.new(0,0,255)
-                    highlight.Transparency = 0
-                end
+                blues.CFrame = plr.Character.HumanoidRootPart.CFrame
+            end
+            for _,reds in pairs(redblocks:GetChildren()) do
+                reds.CFrame = plr.Character.HumanoidRootPart.CFrame
             end
         end
         if workspace:FindFirstChild("Outbreak") then
             topos(94.5852432, 72.6298981, 50.105278)
         end
         if workspace:FindFirstChild("Desert Dehydration") then
-            -- no clue if this is working because i had to try and fix it
-            -- "Handle is not a valid member of Tool" pretty sure it is but ok
+            -- if you arent in round and get the sodas with this
+            -- you can use them to heal in other minigames ;)
             local colas = workspace["Desert Dehydration"].bloxycolas
             colas.DescendantAdded:connect(function(descendant)
                 if descendant:IsA("Part") then
-                    descendant.Handle.CFrame = plr.Character.HumanoidRootPart.CFrame
-                    -- yeah this is stupid
-                    -- ping me if it doesnt work @Custom#5556
+                    descendant.CFrame = plr.Character.HumanoidRootPart.CFrame
                 end
             end)
         end
@@ -217,7 +187,7 @@ uis.InputBegan:connect(function(input)
                     wait(0.001)
                     for _,tiles in pairs(workspace["Tile Takeover"].tiles:GetChildren()) do
                         if tiles.Color ~= Color3.fromRGB(196, 40, 28) then
-                            plr.Character.HumanoidRootPart.CFrame = tiles.CFrame
+                            plr.Character.HumanoidRootPart.CFrame = tiles.CFrame + Vector3.new(0,2,0)
                         end
                     end
                 until string.match(workspace.notification.Value,"wins")
@@ -228,7 +198,7 @@ uis.InputBegan:connect(function(input)
                     wait(0.001)
                     for _,tiles in pairs(workspace["Tile Takeover"].tiles:GetChildren()) do
                         if tiles.Color ~= Color3.fromRGB(13, 105, 172) then
-                            plr.Character.HumanoidRootPart.CFrame = tiles.CFrame
+                            plr.Character.HumanoidRootPart.CFrame = tiles.CFrame + Vector3.new(0,2,0)
                         end
                     end
                 until string.match(workspace.notification.Value,"wins")
@@ -245,13 +215,15 @@ uis.InputBegan:connect(function(input)
             end)
         end
         if workspace:FindFirstChild("Crumble Island") then
-            if workspace["Crumble Island"].mapn.Value == "Candylands" then
-                NEW'Part'{Name = "PLATFORM",Parent = workspace["Crumble Island"],Size = Vector3.new(17,1,17),Position = Vector3.new(52.658844, 45.5821228, -50.265358),Anchored = true}
-                topos(52.658844, 48.5821228, -50.265358)
-            end
+            NEW'Part'{Name = "PLATFORM",Parent = workspace["Crumble Island"],Size = Vector3.new(17,1,17),Position = Vector3.new(52.658844, 45.5821228, -50.265358),Anchored = true}
+            topos(52.658844, 48.5821228, -50.265358)
         end
-        if workspace:FindFirstChild("") then
-            -- template
+        if workspace:FindFirstChild("Gear Battle") then
+            workspace["Gear Battle"].map.ignore.ChildAdded:connect(function(child)
+                if child:IsA("Part") then
+                    child.Position = plr.Character.HumanoidRootPart.Position
+                end
+            end)
         end
     end
 end)
