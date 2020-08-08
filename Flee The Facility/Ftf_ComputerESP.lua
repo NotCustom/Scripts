@@ -1,6 +1,6 @@
 -- The usual//Settings
 uis = game:GetService("UserInputService")
-Key = "Q" -- yesyes you can change this
+_G.CEspKey = "R" -- yesyes you can change this
 HighlightColour = Color3.new(200,0,0) -- Highlight colour for computers
 HLTransparency = 0.5 -- How visible highlight is (0 = Solid Colour, 1 = Invisible)
 -- Main stuff
@@ -21,7 +21,7 @@ function update()
     end
 end
 uis.InputBegan:connect(function(input) -- less atrocious coding
-    if input.KeyCode == Enum.KeyCode[Key] then
+    if input.KeyCode == Enum.KeyCode[_G.CEspKey] then
         -- yesyes that looks worse now i know 
         local map = workspace:FindFirstChild("Facility_0 by MrWindy") or workspace:FindFirstChild("Abandoned Prison by AtomixKing and Duck_Ify") or workspace:FindFirstChild("Abandoned Facility by iiGalaxyKoala, Vexhins, and cyrda") or workspace:FindFirstChild("Airport by deadlybones28") or workspace:FindFirstChild("Homestead by MrWindy")
         if map then
@@ -41,6 +41,13 @@ uis.InputBegan:connect(function(input) -- less atrocious coding
                     end
                 end
             end
+        else
+            -- yay notifications !
+            game.StarterGui:SetCore("SendNotification", {
+                Title = "Modeus ComputerESP",
+                Text = "Intermission or map not found(New map?)",
+                Duration = 4
+            })
         end
     end
 end)
