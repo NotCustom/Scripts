@@ -4,7 +4,7 @@ plr = game.Players.LocalPlayer
 uis = game:GetService("UserInputService")
 -- YES YOU CAN CUSTOMIZE IT
 -- SOMETHING EVERYONE WANTS
-_G.ESPKey = "T" -- no spaces if its something like "LeftControl"
+_G.ESPKey = "" -- FILL THIS OUT IF YOU ARENT USING THE LOADER
 BeastHighlight = Color3.fromRGB(200,0,0)
 SurvivorHighlight = Color3.fromRGB(0,200,0)
 HighlightTransparency = 0.5
