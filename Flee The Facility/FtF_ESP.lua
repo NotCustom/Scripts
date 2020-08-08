@@ -4,14 +4,14 @@ plr = game.Players.LocalPlayer
 uis = game:GetService("UserInputService")
 -- YES YOU CAN CUSTOMIZE IT
 -- SOMETHING EVERYONE WANTS
-ONKEY = "Q" -- no spaces if its something like "LeftControl"
+_G.ESPKey = "T" -- no spaces if its something like "LeftControl"
 BeastHighlight = Color3.fromRGB(200,0,0)
 SurvivorHighlight = Color3.fromRGB(0,200,0)
 HighlightTransparency = 0.5
 -- actual functions
 
 uis.InputBegan:connect(function(input)
-    if input.KeyCode == Enum.KeyCode[ONKEY] then
+    if input.KeyCode == Enum.KeyCode[_G.ESPKey] then
         for _,them in pairs(game.Players:GetChildren()) do
             if them.Character:FindFirstChild("Hammer") and them.Name ~= plr.Name then
                 -- BEAST HIGHLIGHT
