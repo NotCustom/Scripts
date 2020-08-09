@@ -1,8 +1,8 @@
 local plr = game.Players.LocalPlayer
 local uis = game:GetService("UserInputService")
--- _G.SavePeopleKey = "" -- FILL THIS OUT AND UNCOMMENT IF NOT USING LOADER
+Key = "Q"
 uis.InputBegan:connect(function(input)
-    if input.KeyCode == Enum.KeyCode[_G.SavePeopleKey] then 
+    if input.KeyCode == Enum.KeyCode[Key] then 
         local pos = {}
         local map = workspace:FindFirstChild("Facility_0 by MrWindy") or workspace:FindFirstChild("Abandoned Prison by AtomixKing and Duck_Ify") or workspace:FindFirstChild("Abandoned Facility by iiGalaxyKoala, Vexhins, and cyrda") or workspace:FindFirstChild("Airport by deadlybones28") or workspace:FindFirstChild("Homestead by MrWindy")
         if map then
