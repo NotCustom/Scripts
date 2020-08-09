@@ -1,6 +1,6 @@
 local plr = game.Players.LocalPlayer
 local uis = game:GetService("UserInputService")
-_G.SavePeopleKey = "" -- FILL THIS OUT IF YOU ARENT USING THE LOADER
+-- _G.SavePeopleKey = "" -- FILL THIS OUT AND UNCOMMENT IF NOT USING LOADER
 uis.InputBegan:connect(function(input)
     if input.KeyCode == Enum.KeyCode[_G.SavePeopleKey] then 
         local pos = {}
