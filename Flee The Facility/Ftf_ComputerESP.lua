@@ -1,6 +1,6 @@
 -- The usual//Settings
 uis = game:GetService("UserInputService")
-Key = "R" -- yesyes you can change this
+Key = "Q" -- yesyes you can change this
 HighlightColour = Color3.new(200,0,0) -- Highlight colour for computers
 HLTransparency = 0.5 -- How visible highlight is (0 = Solid Colour, 1 = Invisible)
 -- Main stuff
@@ -25,29 +25,24 @@ uis.InputBegan:connect(function(input) -- less atrocious coding
         -- yesyes that looks worse now i know 
         local map = workspace:FindFirstChild("Facility_0 by MrWindy") or workspace:FindFirstChild("Abandoned Prison by AtomixKing and Duck_Ify") or workspace:FindFirstChild("Abandoned Facility by iiGalaxyKoala, Vexhins, and cyrda") or workspace:FindFirstChild("Airport by deadlybones28") or workspace:FindFirstChild("Homestead by MrWindy")
         if map then
-            for _,stuffs in pairs(map:GetChildren()) do
-                if stuffs.Name == "ComputerTable" then
-                    if stuffs.Screen.Color ~= Color3.fromRGB(40, 127, 71) then
-                        if not stuffs:FindFirstChild("MDSHighlight") then
-                            local highlight = Instance.new("BoxHandleAdornment",stuffs)
-                            highlight.Name = "MDSHighlight"
-                            highlight.Adornee = stuffs.BasePart
-                            highlight.ZIndex = 10
-                            highlight.AlwaysOnTop = true
-                            highlight.Size = stuffs.BasePart.Size
-                            highlight.Color3 = HighlightColour
-                            highlight.Transparency = HLTransparency
+            spawn(function()
+                for _,stuffs in pairs(map:GetChildren()) do
+                    if stuffs.Name == "ComputerTable" then
+                        if stuffs.Screen.Color ~= Color3.fromRGB(40, 127, 71) then
+                            if not stuffs:FindFirstChild("MDSHighlight") then
+                                local highlight = Instance.new("BoxHandleAdornment",stuffs)
+                                highlight.Name = "MDSHighlight"
+                                highlight.Adornee = stuffs.BasePart
+                                highlight.ZIndex = 10
+                                highlight.AlwaysOnTop = true
+                                highlight.Size = stuffs.BasePart.Size
+                                highlight.Color3 = HighlightColour
+                                highlight.Transparency = HLTransparency
+                            end
                         end
                     end
                 end
-            end
-        else
-            -- yay notifications !
-            game.StarterGui:SetCore("SendNotification", {
-                Title = "Modeus ComputerESP",
-                Text = "Intermission or map not found(New map?)",
-                Duration = 4
-            })
+            end)
         end
     end
 end)
