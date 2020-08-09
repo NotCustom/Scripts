@@ -11,7 +11,7 @@ local TextLabel = Instance.new("TextLabel")
 local file = isfile("FtFSettings.json")
 
 Loader.Name = "Loader"
-Loader.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+Loader.Parent = game.CoreGui
 
 Frame.Parent = Loader
 Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -106,6 +106,7 @@ TextLabel.Font = Enum.Font.SourceSansItalic
 TextLabel.Text = "^ Defaults\nmade this in like, 5 minutes\nLeave empty to not load"
 TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 TextLabel.TextSize = 14.000
+
 if file then
 	local savedsets = game:GetService("HttpService"):JSONDecode(readfile("FtFSettings.json"))
 	ESPKey.Text = savedsets.ESPK
@@ -138,10 +139,10 @@ Load.MouseButton1Down:connect(function()
 	end
 	if CESPKey.Text ~= "" then
 		_G.CEspKey = CESPKey.Text
-		loadstring(game:HttpGet('https://github.com/NotCustom/Scripts/blob/master/Flee%20The%20Facility/FtFLoaderScripts/Ftf_ComputerESP.lua'))()
+		loadstring(game:HttpGet('https://raw.githubusercontent.com/NotCustom/Scripts/master/Flee%20The%20Facility/FtFLoaderScripts/Ftf_ComputerESP.lua'))()
 	end
 	if Free.Text ~= "" then
-		loadstring(game:HttpGet('https://github.com/NotCustom/Scripts/blob/master/Flee%20The%20Facility/FtFLoaderScripts/Ftf_SavePeople.lua'))()
+		loadstring(game:HttpGet('https://raw.githubusercontent.com/NotCustom/Scripts/master/Flee%20The%20Facility/FtFLoaderScripts/Ftf_SavePeople.lua'))()
 		_G.SavePeopleKey = Free.Text
 	end
 end)
