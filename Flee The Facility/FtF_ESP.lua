@@ -4,14 +4,14 @@ plr = game.Players.LocalPlayer
 uis = game:GetService("UserInputService")
 -- YES YOU CAN CUSTOMIZE IT
 -- SOMETHING EVERYONE WANTS
--- _G.ESPKey = "" -- FILL THIS OUT AND UNCOMMENT IF NOT USING LOADER
+Key = "Q" -- no spaces if its something like "LeftControl"
 BeastHighlight = Color3.fromRGB(200,0,0)
 SurvivorHighlight = Color3.fromRGB(0,200,0)
 HighlightTransparency = 0.5
 -- actual functions
 
 uis.InputBegan:connect(function(input)
-    if input.KeyCode == Enum.KeyCode[_G.ESPKey] then
+    if input.KeyCode == Enum.KeyCode[Key] then
         for _,them in pairs(game.Players:GetChildren()) do
             if them.Character:FindFirstChild("Hammer") and them.Name ~= plr.Name then
                 -- BEAST HIGHLIGHT
