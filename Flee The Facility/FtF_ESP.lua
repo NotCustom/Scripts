@@ -99,3 +99,9 @@ game.ReplicatedStorage.IsGameActive.Changed:connect(function(value)
         end
     end
 end)
+game.StarterGui:SetCore("ChatMakeSystemMessage", {
+	Text = "FtF ESP Loaded!",
+	Color = Color3.fromRGB(175, 85, 255),
+	Font = Enum.Font.SourceSansBold,
+	TextSize = 18
+})
