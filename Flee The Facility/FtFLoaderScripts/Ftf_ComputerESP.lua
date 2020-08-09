@@ -1,6 +1,5 @@
 -- The usual//Settings
 uis = game:GetService("UserInputService")
--- _G.CEspKey = "" -- FILL THIS OUT AND UNCOMMENT IF NOT USING LOADER
 HighlightColour = Color3.new(200,0,0) -- Highlight colour for computers
 HLTransparency = 0.5 -- How visible highlight is (0 = Solid Colour, 1 = Invisible)
 -- Main stuff
