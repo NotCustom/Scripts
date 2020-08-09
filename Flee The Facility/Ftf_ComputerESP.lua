@@ -58,3 +58,9 @@ while wait(15) do -- adjust if needed
         -- considered binding to RenderStepped but forgot how s u p e r fast it is
     end
 end
+game.StarterGui:SetCore("ChatMakeSystemMessage", {
+	Text = "FtF ComputerESP Loaded!",
+	Color = Color3.fromRGB(175, 85, 255),
+	Font = Enum.Font.SourceSansBold,
+	TextSize = 18
+})
