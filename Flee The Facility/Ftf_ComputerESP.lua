@@ -44,7 +44,7 @@ uis.InputBegan:connect(function(input) -- less atrocious coding
         else
             -- yay notifications !
             game.StarterGui:SetCore("SendNotification", {
-                Title = "Modeus ComputerESP",
+                Title = "FtF ComputerESP",
                 Text = "Intermission or map not found(New map?)",
                 Duration = 4
             })
