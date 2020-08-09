@@ -22,9 +22,3 @@ uis.InputBegan:connect(function(input)
         end
     end
 end)
-game.StarterGui:SetCore("ChatMakeSystemMessage", { -- pog
-	Text = "FtF SavePeople Loaded!",
-	Color = Color3.fromRGB(175, 85, 255),
-	Font = Enum.Font.SourceSansBold,
-	TextSize = 18
-})
