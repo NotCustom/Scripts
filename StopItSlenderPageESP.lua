@@ -1,4 +1,3 @@
--- Stop it Slender Page Highlight
 Key = "Q"
 game:GetService("UserInputService").InputBegan:connect(function(input)
     if input.KeyCode == Enum.KeyCode[Key] then
