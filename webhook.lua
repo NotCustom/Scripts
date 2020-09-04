@@ -5,7 +5,7 @@ msg = {
 local response = syn.request(
 {
 Url = "DISCORDWEBHOOKLINK",
-Method = "POST",
+Method = "POST", -- Change "POST" to "DELETE" to delete the webhook
 Headers = {
 ["Content-Type"] = "application/json"
 },
