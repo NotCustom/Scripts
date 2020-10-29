@@ -7,7 +7,7 @@ HLTransparency = 0.5 -- How visible highlight is (0 = Solid Colour, 1 = Invisibl
 function update()
     -- originally this was a YandereDev style, massive `if then else` statement
     -- luckily, "or" can be used in locals 
-    local cmap = workspace:FindFirstChild("Facility_0 by MrWindy") or workspace:FindFirstChild("Abandoned Prison by AtomixKing and Duck_Ify") or workspace:FindFirstChild("Abandoned Facility by iiGalaxyKoala, Vexhins, and cyrda") or workspace:FindFirstChild("Airport by deadlybones28") or workspace:FindFirstChild("Homestead by MrWindy")
+    local cmap = workspace:FindFirstChild("Facility_0 by MrWindy") or workspace:FindFirstChild("Abandoned Prison by AtomixKing and Duck_Ify") or workspace:FindFirstChild("Abandoned Facility by iiGalaxyKoala, Vexhins, and cyrda") or workspace:FindFirstChild("Airport by deadlybones28") or workspace:FindFirstChild("Homestead by MrWindy") or workspace:FindFirstChild("The Library by Drainhp") 
     if cmap then
         for _,stuff in pairs(cmap:GetChildren()) do
             if stuff.Name == "ComputerTable" then
@@ -23,7 +23,7 @@ end
 uis.InputBegan:connect(function(input) -- less atrocious coding
     if input.KeyCode == Enum.KeyCode[Key] then
         -- yesyes that looks worse now i know 
-        local map = workspace:FindFirstChild("Facility_0 by MrWindy") or workspace:FindFirstChild("Abandoned Prison by AtomixKing and Duck_Ify") or workspace:FindFirstChild("Abandoned Facility by iiGalaxyKoala, Vexhins, and cyrda") or workspace:FindFirstChild("Airport by deadlybones28") or workspace:FindFirstChild("Homestead by MrWindy")
+        local map = workspace:FindFirstChild("Facility_0 by MrWindy") or workspace:FindFirstChild("Abandoned Prison by AtomixKing and Duck_Ify") or workspace:FindFirstChild("Abandoned Facility by iiGalaxyKoala, Vexhins, and cyrda") or workspace:FindFirstChild("Airport by deadlybones28") or workspace:FindFirstChild("Homestead by MrWindy") or workspace:FindFirstChild("The Library by Drainhp") 
         if map then
             spawn(function()
                 for _,stuffs in pairs(map:GetChildren()) do
