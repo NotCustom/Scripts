@@ -1,18 +1,10 @@
--- 09:20:15 PM - [itsMechronicalMega]: sowwy custom~kun...
--- please never call me this again
+-- Catgirl Kraken-nyan~ Today at 13:43 : Let me groom you.
 uis = game:GetService("UserInputService")
 plr = game.Players.LocalPlayer
 key = "Q" -- do i have to explain at this point
 function topart(object)
-    -- You cant teleport anymore, so just teleport it to you lol
+    -- You cant teleport anymore so just teleport it to you lol
     object.CFrame = plr.Character.HumanoidRootPart.CFrame
-end
-function ping(Header,Msg)
-    game.StarterGui:SetCore("SendNotification", {
-        Title = Header,
-        Text = Msg,
-        Duration = 4
-    })
 end
 
 uis.InputBegan:connect(function(input)
@@ -70,13 +62,18 @@ uis.InputBegan:connect(function(input)
            workspace["Just Jump"].map.rope:Destroy() 
         end
         if workspace:FindFirstChild("Teamwork Trial") then
-            topart(workspace["Teamwork Trial"].goal) -- finally
+            if workspace["Teamwork Trial"].mapn.Value == "Gulch" then
+                
+            else
+                topart(workspace["Teamwork Trial"].goal)
+            end
+            
         end
         if workspace:FindFirstChild("Avalanche") then
             workspace.Avalanche.ChildAdded:connect(function(child)
                 if child.Name == "snowball" then
                     child.Size = Vector3.new(0,0,0)
-                    -- cant delete it, that gets noticed 
+                    -- cant delete it, so just resize it
                 end
             end)
         end
@@ -105,8 +102,7 @@ uis.InputBegan:connect(function(input)
             end
         end
         if workspace:FindFirstChild("Desert Dehydration") then
-            -- if you arent in round and get the sodas with this
-            -- you can use them to heal in other minigames ;)
+            -- you can use them to heal in other games lol
             local colas = workspace["Desert Dehydration"].bloxycolas
             colas.DescendantAdded:connect(function(descendant)
                 if descendant:IsA("Part") then
@@ -176,6 +172,28 @@ uis.InputBegan:connect(function(input)
         if workspace:FindFirstChild("Spiral Ascent") then
             workspace["Spiral Ascent"].FinishPart.RemoteFunction:InvokeServer()
             -- aha, you fools !
+        end
+        if workspace:FindFirstChild("Blow Dryer Battle") then
+            game.Players.LocalPlayer.Character:WaitForChild("BlowDryer").Handle.Anchored = true
+            while wait(1) do
+                if string.match(workspace.notification.Value,"wins") then
+                    game:GetService("Workspace").ireallyhateisrael.BlowDryer.Handle.Anchored = true
+                end
+            end
+        end
+        if workspace:FindFirstChild("Lava Forecast") then
+            workspace["Lava Forecast"].ChildAdded:connect(function(child)
+                if child.Name == "lavarain" then
+                    child:Destroy()
+                end
+            end)
+        end
+        if workspace:FindFirstChild("Bombs Away") then
+            workspace["Bombs Away"].bombs.ChildAdded:connect(function(child)
+                if child.Name == "bomb" then
+                    child:Destroy()
+                end
+            end)
         end
     end
 end)
