@@ -67,7 +67,6 @@ uis.InputBegan:connect(function(input)
             else
                 topart(workspace["Teamwork Trial"].goal)
             end
-            
         end
         if workspace:FindFirstChild("Avalanche") then
             workspace.Avalanche.ChildAdded:connect(function(child)
@@ -82,9 +81,6 @@ uis.InputBegan:connect(function(input)
         end
         if workspace:FindFirstChild("Hard-Pressed") then
             workspace["Hard-Pressed"].map.presses:Destroy()
-        end
-        if workspace:FindFirstChild("Mechanical Mayhem") then
-            workspace["Mechanical Mayhem"].map.turn:Destroy()
         end
         if workspace:FindFirstChild("Block Hunt") then
             -- Final rewrite @ 30.7.2020
@@ -119,7 +115,11 @@ uis.InputBegan:connect(function(input)
                     wait(0.00001)
                     for _,tiles in pairs(workspace["Tile Takeover"].tiles:GetChildren()) do
                         if tiles.Color ~= Color3.fromRGB(196, 40, 28) then
+                            local pos = tiles.Position
+                            tiles.CanCollide = false
                             topart(tiles)
+                            wait(1)
+                            tiles.Position = CFrame.new(pos)
                         end
                     end
                 until string.match(workspace.notification.Value,"wins")
@@ -130,7 +130,11 @@ uis.InputBegan:connect(function(input)
                     wait(0.00001)
                     for _,tiles in pairs(workspace["Tile Takeover"].tiles:GetChildren()) do
                         if tiles.Color ~= Color3.fromRGB(13, 105, 172) then
+                            local pos = tiles.Position
+                            tiles.CanCollide = false
                             topart(tiles)
+                            wait(1)
+                            tiles.Position = CFrame.new(pos)
                         end
                     end
                 until string.match(workspace.notification.Value,"wins")
@@ -138,7 +142,7 @@ uis.InputBegan:connect(function(input)
         end
         if workspace:FindFirstChild("Conveyor Conundrum") then
             workspace["Conveyor Conundrum"].obsts.ChildAdded:connect(function(child)
-                child:Destroy()
+                child:ClearAllChildren()
             end)
         end
         if workspace:FindFirstChild("Gear Battle") then
@@ -153,18 +157,6 @@ uis.InputBegan:connect(function(input)
         end
         if workspace:FindFirstChild("Castle Climb") then
             topart(workspace["Castle Climb"].Goal)
-        end
-        if workspace:FindFirstChild("Spiky Spinner") then
-            workspace["Spiky Spinner"].SpikySpinner:Destroy()
-        end
-        if workspace:FindFirstChild("Protect the Statue") then
-            for _,tnts in pairs(workspace["Protect the Statue"].tnts:GetChildren()) do
-                tnts.ChildAdded:connect(function(child)
-                    if child.Name == "nfusep" then
-                        topart(child)
-                    end
-                end)
-            end
         end
         if workspace:FindFirstChild("Crag Climber") then
             topart(workspace["Crag Clamber"].Goal)
@@ -181,19 +173,31 @@ uis.InputBegan:connect(function(input)
                 end
             end
         end
-        if workspace:FindFirstChild("Lava Forecast") then
-            workspace["Lava Forecast"].ChildAdded:connect(function(child)
-                if child.Name == "lavarain" then
-                    child:Destroy()
-                end
-            end)
-        end
         if workspace:FindFirstChild("Bombs Away") then
             workspace["Bombs Away"].bombs.ChildAdded:connect(function(child)
                 if child.Name == "bomb" then
                     child:Destroy()
                 end
             end)
+        end
+        if workspace:FindFirstChild("Train Trouble") then
+            workspace["Train Trouble"].ChildAdded:connect(function(child)
+                if child.Name == "leftpost" or child.Name == "bothpost" or child.Name == "rightpost" then
+                    child:Destroy() 
+                end
+            end)
+        end
+        if workspace:FindFirstChild("Aztec Adventure") then
+            topart(workspace["Aztec Adventure"].Goal.Goal) 
+        end
+        if workspace:FindFirstChild("Hurdle Hurry") then
+            topart(workspace["Hurdle Hurry"].Goal.Goal) 
+        end
+        if workspace:FindFirstChild("Rampant Rhythms") then
+            workspace["Rampant Rhythms"].SubmitResult:FireServer(math.huge)
+        end
+        if workspace:FindFirstChild("Flee the Facility") then
+            workspace["Flee the Facility"].Void.RemoteFunction:InvokeServer()
         end
     end
 end)
