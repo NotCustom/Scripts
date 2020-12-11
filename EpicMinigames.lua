@@ -1,13 +1,11 @@
--- Catgirl Kraken-nyan~ Today at 13:43 : Let me groom you.
-uis = game:GetService("UserInputService")
+-- had to put on my programming socks for some of these 
 plr = game.Players.LocalPlayer
-key = "Q" -- do i have to explain at this point
+key = "Q"
 function topart(object)
-    -- You cant teleport anymore so just teleport it to you lol
     object.CFrame = plr.Character.HumanoidRootPart.CFrame
 end
 
-uis.InputBegan:connect(function(input)
+game:GetService("UserInputService").InputBegan:connect(function(input)
     if input.KeyCode == Enum.KeyCode[key] then
         if workspace:FindFirstChild("Manic Mining") then
             local mine = workspace["Manic Mining"]
@@ -63,8 +61,12 @@ uis.InputBegan:connect(function(input)
         end
         if workspace:FindFirstChild("Teamwork Trial") then
             if workspace["Teamwork Trial"].mapn.Value == "Gulch" then
-                
-            else
+                if plr.Character.Head.teamDot.ImageLabel.ImageColor3 == Color3.fromRGB(55,55,255) then
+                    topart(workspace["Teamwork Trial"].bgoal)
+                elseif plr.Character.Head.teamDot.ImageLabel.ImageColor3 == Color3.fromRGB(255,55,55) then
+                    topart(workspace["Teamwork Trial"].rgoal)
+                end
+            else -- idk dont ask
                 topart(workspace["Teamwork Trial"].goal)
             end
         end
@@ -72,7 +74,6 @@ uis.InputBegan:connect(function(input)
             workspace.Avalanche.ChildAdded:connect(function(child)
                 if child.Name == "snowball" then
                     child.Size = Vector3.new(0,0,0)
-                    -- cant delete it, so just resize it
                 end
             end)
         end
@@ -83,7 +84,6 @@ uis.InputBegan:connect(function(input)
             workspace["Hard-Pressed"].map.presses:Destroy()
         end
         if workspace:FindFirstChild("Block Hunt") then
-            -- Final rewrite @ 30.7.2020
             local redblocks = workspace["Block Hunt"].DroppedRedBlocks
             local blueblocks = workspace["Block Hunt"].DroppedBlueBlocks
             if plr.Character.Head.teamDot.ImageLabel.ImageColor3 == Color3.fromRGB(55,55,255) then
@@ -115,26 +115,17 @@ uis.InputBegan:connect(function(input)
                     wait(0.00001)
                     for _,tiles in pairs(workspace["Tile Takeover"].tiles:GetChildren()) do
                         if tiles.Color ~= Color3.fromRGB(196, 40, 28) then
-                            local pos = tiles.Position
-                            tiles.CanCollide = false
                             topart(tiles)
-                            wait(1)
-                            tiles.Position = CFrame.new(pos)
                         end
                     end
                 until string.match(workspace.notification.Value,"wins")
-                -- hopefully this will work
             end
             if plr.Character.Head.teamDot.ImageLabel.ImageColor3 == Color3.fromRGB(55, 55, 255) then
                 repeat
                     wait(0.00001)
                     for _,tiles in pairs(workspace["Tile Takeover"].tiles:GetChildren()) do
                         if tiles.Color ~= Color3.fromRGB(13, 105, 172) then
-                            local pos = tiles.Position
-                            tiles.CanCollide = false
                             topart(tiles)
-                            wait(1)
-                            tiles.Position = CFrame.new(pos)
                         end
                     end
                 until string.match(workspace.notification.Value,"wins")
@@ -166,10 +157,10 @@ uis.InputBegan:connect(function(input)
             -- aha, you fools !
         end
         if workspace:FindFirstChild("Blow Dryer Battle") then
-            game.Players.LocalPlayer.Character:WaitForChild("BlowDryer").Handle.Anchored = true
+            plr.Character:WaitForChild("BlowDryer").Handle.Anchored = true
             while wait(1) do
                 if string.match(workspace.notification.Value,"wins") then
-                    game:GetService("Workspace").ireallyhateisrael.BlowDryer.Handle.Anchored = true
+                    plr.Character.BlowDryer.Handle.Anchored = true
                 end
             end
         end
@@ -177,13 +168,6 @@ uis.InputBegan:connect(function(input)
             workspace["Bombs Away"].bombs.ChildAdded:connect(function(child)
                 if child.Name == "bomb" then
                     child:Destroy()
-                end
-            end)
-        end
-        if workspace:FindFirstChild("Train Trouble") then
-            workspace["Train Trouble"].ChildAdded:connect(function(child)
-                if child.Name == "leftpost" or child.Name == "bothpost" or child.Name == "rightpost" then
-                    child:Destroy() 
                 end
             end)
         end
@@ -198,6 +182,19 @@ uis.InputBegan:connect(function(input)
         end
         if workspace:FindFirstChild("Flee the Facility") then
             workspace["Flee the Facility"].Void.RemoteFunction:InvokeServer()
+        end
+        if workspace:FindFirstChild("Turntable Scurry") then
+            topart(workspace["Turntable Scurry"].Centre)
+        end
+        if workspace:FindFirstChild("Cloud Control") then
+            local cloudfolder = workspace["Cloud Control"].Clouds
+            while wait(1) do
+                for _,clouds in pairs(cloudfolder:GetChildren()) do    
+                    if clouds.Color ~= plr.Character.Head.teamDot.ImageLabel.ImageColor3 then
+                        topart(clouds)
+                    end
+                end
+            end
         end
     end
 end)
