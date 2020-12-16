@@ -1,5 +1,5 @@
-welcome to hell
+welcome to the ██████ dimension
 
 population: us
 
-feel free to contribute edits
+feel free to contribute
