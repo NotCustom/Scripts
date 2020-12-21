@@ -1,4 +1,4 @@
--- had to put on my programming socks for some of these 
+-- Sonogami Rinne best girl
 plr = game.Players.LocalPlayer
 key = "Q"
 function topart(object)
@@ -181,14 +181,14 @@ game:GetService("UserInputService").InputBegan:connect(function(input)
             workspace["Rampant Rhythms"].SubmitResult:FireServer(math.huge)
         end
         if workspace:FindFirstChild("Flee the Facility") then
-            workspace["Flee the Facility"].Void.RemoteFunction:InvokeServer()
+            topart(workspace["Flee the Facility"].Exit.Part)
         end
         if workspace:FindFirstChild("Turntable Scurry") then
             topart(workspace["Turntable Scurry"].Centre)
         end
         if workspace:FindFirstChild("Cloud Control") then
-            local cloudfolder = workspace["Cloud Control"].Clouds
-            while wait(1) do
+            local cloudfolder = workspace["Cloud Control"].tiles
+            while wait(0.5) do
                 for _,clouds in pairs(cloudfolder:GetChildren()) do    
                     if clouds.Color ~= plr.Character.Head.teamDot.ImageLabel.ImageColor3 then
                         topart(clouds)
