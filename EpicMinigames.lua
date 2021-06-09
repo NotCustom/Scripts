@@ -114,10 +114,15 @@ game:GetService("UserInputService").InputBegan:connect(function(input)
         if workspace:FindFirstChild("Tile Takeover") then
             if plr.Character.Head.teamDot.ImageLabel.ImageColor3 == Color3.fromRGB(255, 55, 55) then
                 repeat
-                    wait(0.00001)
+                    wait(0.00001) -- Feel free to adjust these
                     for _,tiles in pairs(workspace["Tile Takeover"].tiles:GetChildren()) do
                         if tiles.Color ~= Color3.fromRGB(196, 40, 28) then
+                            local pos = tiles.CFrame -- Slight change, no clue if it works
+                            tiles.CanCollide = false
                             topart(tiles)
+                            tiles.CanCollide = true
+                            tiles.CFrame = pos
+                            pos = nil
                         end
                     end
                 until string.match(workspace.notification.Value,"wins")
@@ -127,7 +132,12 @@ game:GetService("UserInputService").InputBegan:connect(function(input)
                     wait(0.00001)
                     for _,tiles in pairs(workspace["Tile Takeover"].tiles:GetChildren()) do
                         if tiles.Color ~= Color3.fromRGB(13, 105, 172) then
+                            local pos = tiles.CFrame
+                            tiles.CanCollide = false
                             topart(tiles)
+                            tiles.CanCollide = true
+                            tiles.CFrame = pos
+                            pos = nil
                         end
                     end
                 until string.match(workspace.notification.Value,"wins")
@@ -207,6 +217,9 @@ game:GetService("UserInputService").InputBegan:connect(function(input)
             tool.Unequipped:connect(function()
                 tool.Handle.Anchored = false
             end)
+        end
+        if workspace:FindFirstChild("Cake Delivery") then
+            -- Making something for this is an actual pain, uploaded for now | I'll work on this later
         end
     end
 end)
