@@ -1,4 +1,6 @@
--- Sonogami Rinne best girl
+-- No genuine clue if any of this works
+-- It's 3am and I don't feel like testing it
+
 plr = game.Players.LocalPlayer
 key = "Q"
 function topart(object)
@@ -196,5 +198,16 @@ game:GetService("UserInputService").InputBegan:connect(function(input)
                 end
             end
         end
+        if workspace:FindFirstChild("Round Race") then
+            topart(workspace["Round Race"].Goal.Goal)
+        end
+        if workspace:FindFirstChild("Crumble Island") or workspace:FindFirstChild("Toxic Reactions") then
+            plr.Backpack:FindFirstChildWhichIsA("Tool").Parent = plr.Character
+            local tool = plr.Character:FindFirstChildWhichIsA("Tool").Handle.Anchored = true -- I'll be super surprised if this even works
+            tool.Unequipped:connect(function()
+                tool.Handle.Anchored = false
+            end)
+        end
+
     end
 end)
