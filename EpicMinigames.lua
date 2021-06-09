@@ -208,6 +208,5 @@ game:GetService("UserInputService").InputBegan:connect(function(input)
                 tool.Handle.Anchored = false
             end)
         end
-
     end
 end)
