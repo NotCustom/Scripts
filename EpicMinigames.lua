@@ -1,5 +1,5 @@
--- No genuine clue if any of this works
--- It's 3am and I don't feel like testing it
+-- The issue with testing these is I have to wait for the minigame to be chosen
+-- And I don't feel like shilling out 14 robux just to choose it myself
 
 plr = game.Players.LocalPlayer
 key = "Q"
@@ -90,12 +90,12 @@ game:GetService("UserInputService").InputBegan:connect(function(input)
             local blueblocks = workspace["Block Hunt"].DroppedBlueBlocks
             if plr.Character.Head.teamDot.ImageLabel.ImageColor3 == Color3.fromRGB(55,55,255) then
                 for _,reds in pairs(redblocks:GetChildren()) do
-                    reds.CFrame = plr.Character.HumanoidRootPart.CFrame
+                    topart(reds)
                 end
             end
             if plr.Character.Head.teamDot.ImageLabel.ImageColor3 == Color3.fromRGB(255,55,55) then
                 for _,blues in pairs(blueblocks:GetChildren()) do
-                    blues.CFrame = plr.Character.HumanoidRootPart.CFrame
+                    topart(blues)
                 end
             end
         end
@@ -112,10 +112,11 @@ game:GetService("UserInputService").InputBegan:connect(function(input)
             topart(workspace["High-Rolling"].Goal.Goal)
         end
         if workspace:FindFirstChild("Tile Takeover") then
-            if plr.Character.Head.teamDot.ImageLabel.ImageColor3 == Color3.fromRGB(255, 55, 55) then
-                repeat
-                    wait(0.00001) -- Feel free to adjust these
-                    for _,tiles in pairs(workspace["Tile Takeover"].tiles:GetChildren()) do
+            -- YES I REALISE I BROKE THIS IM JUST NOT IN THE MOOD TO FIX IT :(
+            for _,tiles in pairs(workspace["Tile Takeover"]:GetChildren()) do
+                if plr.Character.Head.teamDot.ImageLabel.ImageColor3 == Color3.fromRGB(255, 55, 55) then
+                    repeat
+                        wait(0.00001) -- Feel free to adjust these
                         if tiles.Color ~= Color3.fromRGB(196, 40, 28) then
                             local pos = tiles.CFrame -- Slight change, no clue if it works
                             tiles.CanCollide = false
@@ -124,13 +125,11 @@ game:GetService("UserInputService").InputBegan:connect(function(input)
                             tiles.CFrame = pos
                             pos = nil
                         end
-                    end
-                until string.match(workspace.notification.Value,"wins")
-            end
-            if plr.Character.Head.teamDot.ImageLabel.ImageColor3 == Color3.fromRGB(55, 55, 255) then
-                repeat
-                    wait(0.00001)
-                    for _,tiles in pairs(workspace["Tile Takeover"].tiles:GetChildren()) do
+                    until string.match(workspace.notification.Value,"wins")
+                end
+                if plr.Character.Head.teamDot.ImageLabel.ImageColor3 == Color3.fromRGB(55, 55, 255) then
+                    repeat
+                        wait(0.00001)
                         if tiles.Color ~= Color3.fromRGB(13, 105, 172) then
                             local pos = tiles.CFrame
                             tiles.CanCollide = false
@@ -139,8 +138,8 @@ game:GetService("UserInputService").InputBegan:connect(function(input)
                             tiles.CFrame = pos
                             pos = nil
                         end
-                    end
-                until string.match(workspace.notification.Value,"wins")
+                    until string.match(workspace.notification.Value,"wins")
+                end
             end
         end
         if workspace:FindFirstChild("Conveyor Conundrum") then
@@ -190,7 +189,7 @@ game:GetService("UserInputService").InputBegan:connect(function(input)
             topart(workspace["Hurdle Hurry"].Goal.Goal) 
         end
         if workspace:FindFirstChild("Rampant Rhythms") then
-            workspace["Rampant Rhythms"].SubmitResult:FireServer(math.huge)
+            workspace["Rampant Rhythms"].SubmitResult:FireServer(math.huge) -- Really ?
         end
         if workspace:FindFirstChild("Flee the Facility") then
             topart(workspace["Flee the Facility"].Exit.Part)
@@ -211,15 +210,66 @@ game:GetService("UserInputService").InputBegan:connect(function(input)
         if workspace:FindFirstChild("Round Race") then
             topart(workspace["Round Race"].Goal.Goal)
         end
-        if workspace:FindFirstChild("Crumble Island") or workspace:FindFirstChild("Toxic Reactions") then
-            plr.Backpack:FindFirstChildWhichIsA("Tool").Parent = plr.Character
+        if workspace:FindFirstChild("Crumble Island") or workspace:FindFirstChild("Toxic Reactions") or workspace:FindFirstChild("Teetering Turmoil") or workspace:FindFirstChild("Cliffside Chaos") then
+            -- Doesn't work : To be revised 
+            --[[plr.Backpack:FindFirstChildWhichIsA("Tool").Parent = plr.Character
             local tool = plr.Character:FindFirstChildWhichIsA("Tool").Handle.Anchored = true -- I'll be super surprised if this even works
             tool.Unequipped:connect(function()
                 tool.Handle.Anchored = false
-            end)
+            end)]]--
         end
         if workspace:FindFirstChild("Cake Delivery") then
             -- Making something for this is an actual pain, uploaded for now | I'll work on this later
+        end
+        if workspace:FindFirstChild("Shock Absorbers") then
+            for _,boxes in pairs (workspace["Shock Absorbers"].boxes:GetChildren()) do
+                if boxes.plat.pname.Value == plr.Name then
+                    boxes.leftbutton.ChildAdded:connect(function()
+                        plr.Character.Humanoid:MoveTo(boxes.leftbutton)
+                    end)
+                    boxes.rightbutton.ChildAdded:connect(function()
+                        plr.Character.Humanoid:MoveTo(boxes.rightbutton)
+                    end)
+                    boxes.topbutton.ChildAdded:connect(function()
+                        -- No genuine clue if this one works
+                        plr.Character.Humanoid:MoveTo(boxes.topbutton)
+                        plr.Character.Humanoid.Jump.Value = true
+                    end)
+                end
+            end
+        end
+        if workspace:FindFirstChild("Lights On") then
+            workspace["Lights On"].schedule:ClearAllChildren()
+        end
+        if workspace:FindFirstChild("Bowling Bustle") then
+            workspace["Bowling Bustle"].ChildAdded:connect(function(child)
+                if child.Name == "Ball" then
+                    child:Destroy()
+                end
+            end)
+        end
+        if workspace:FindFirstChild("Mechanical Mayhem") then
+            workspace["Mechanical Mayhem"].map.cogs:Destroy()
+        end
+        if workspace:FindFirstChild("Flintlock Fight") then
+            -- Not sure what else I can really do for this
+            -- Highlight the enemy for now
+            for _,plrs in pairs(game.Players:GetChildren()) do
+                if plrs.Character.Head.teamDot.ImageLabel.ImageColor3 ~= plr.Character.Head.teamDot.ImageLabel.ImageColor3 then
+                    for _,limbs in pairs(plrs.Character:GetChildren()) do
+                        if limbs:IsA("Part") and limbs.Name ~= "HumanoidRootPart" then
+                            local highlight = Instance.new("BoxHandleAdornment",limbs)
+                            highlight.Name = "NCHighlight_"..limbs.Name
+                            highlight.Adornee = limbs
+                            highlight.ZIndex = 10
+                            highlight.AlwaysOnTop = true
+                            highlight.Size = limbs.Size
+                            highlight.Color3 = plrs.Character.Head.teamDot.ImageLabel.ImageColor3
+                            highlight.Transparency = 0.5
+                        end
+                    end
+                end
+            end
         end
     end
 end)
