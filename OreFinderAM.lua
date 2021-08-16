@@ -1,18 +1,19 @@
 -- Highlights ores listed in the table, useful for finding specific things
-update = false -- Should newly spawned ores be highlighted?
+loadstring(game:HttpGet("https://raw.githubusercontent.com/NotCustom/Scripts/master/Resource/OreColourList.lua", true))() -- Loads my custom ore colour table
+
 local ores = {
     "Antimatter",
     "Painite"
 }
 local settings = {
     HighlightTransparency = 0.5,
-    HighlightColour = Color3.fromRGB(0, 0, 210)
+    Update = true
 }
 function Highlight(ore)
     local highlight = Instance.new("BoxHandleAdornment", ore)
     highlight.Adornee = ore
     highlight.AlwaysOnTop = true
-    highlight.Color3 = settings.HighlightColour
+    highlight.Color3 = _G.OreColours[ore.Name] 
     highlight.Name = "_HIGHLIGHT"
     highlight.Size = ore.Size
     highlight.Transparency = settings.HighlightTransparency
@@ -26,7 +27,7 @@ for _,oress in pairs(workspace.Mine:GetChildren()) do
         Highlight(oress)
     end
 end
-if update == true then
+if settings.Update == true then
     workspace.Mine.ChildAdded:connect(function(child)
         if table.find(ores, child.Name) then
             Highlight(child)
