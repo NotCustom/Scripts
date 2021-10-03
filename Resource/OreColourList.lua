@@ -40,5 +40,9 @@ _G.OreColours = {
     Promethium = Color3.fromRGB(38, 57, 44),
     Stellarite = Color3.fromRGB(51, 229, 191),
     Symmetrium = Color3.fromRGB(0, 49, 165),
-    Ambrosia = Color3.fromRGB(255,246,144)
+    Ambrosia = Color3.fromRGB(255,246,144),
+    ["Sinistyte M"] = Color3.fromRGB(255, 138, 55),
+    ["Sinistyte L"] = Color3.fromRGB(138, 84, 255),
+    ["Sinistyte S"] = Color3.fromRGB(70, 173, 65),
+    ["Sinistyte E"] = Color3.fromRGB(255, 126, 245)
 }
