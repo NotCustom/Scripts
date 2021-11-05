@@ -1,4 +1,3 @@
--- did i mention you can change these?
 PageKey = "Q"
 HGenKey = "E"
 ActGenKey = "X" -- Actives generators instead of highlighting them
@@ -14,6 +13,16 @@ function updateGens()
         end
     end 
 end
+function Highlight(obj)
+    local highlightt = Instance.new("BoxHandleAdornment", obj)
+    highlightt.Name = "trol"
+    highlightt.Adornee = obj
+    highlightt.ZIndex = 10
+    highlightt.AlwaysOnTop = true
+    highlightt.Size = obj.Size
+    highlightt.Color3 = Color3.fromRGB(255,27,100)
+    highlightt.Transparency = 0.3
+end
 game:GetService("UserInputService").InputBegan:connect(function(input)
     if input.KeyCode == Enum.KeyCode[PageKey] then
         local map = workspace:FindFirstChild("MAP")
@@ -21,27 +30,13 @@ game:GetService("UserInputService").InputBegan:connect(function(input)
             spawn(function()
                 for _,pages in pairs(map.Pages:GetChildren()) do    
                     if pages:IsA("Part") then
-                        if not pages:FindFirstChild("SHHighlight") then
-                            local highlight = Instance.new("BoxHandleAdornment",pages)
-                            highlight.Name = "SHHighlight"
-                            highlight.Adornee = pages
-                            highlight.ZIndex = 10
-                            highlight.AlwaysOnTop = true
-                            highlight.Size = pages.Size
-                            highlight.Color3 = Color3.fromRGB(255,27,100)
-                            highlight.Transparency = 0.3
+                        if not pages:FindFirstChild("trol") then
+                            Highlight(pages)
                         end
                     end
                 end
-                if not map.HPageSpawns.HPageSpawn:FindFirstChild("SHHighlight") then
-                    local hpagehighlight = Instance.new("BoxHandleAdornment",map.HPageSpawns.HPageSpawn)
-                    hpagehighlight.Name = "SHHighlight"
-                    hpagehighlight.Adornee = map.HPageSpawns.HPageSpawn
-                    hpagehighlight.ZIndex = 10
-                    hpagehighlight.AlwaysOnTop = true
-                    hpagehighlight.Size = map.HPageSpawns.HPageSpawn.Size
-                    hpagehighlight.Color3 = Color3.fromRGB(255,27,100)
-                    hpagehighlight.Transparency = 0.3
+                if not map.HPageSpawns.HPageSpawn:FindFirstChild("trol") then
+                    Highlight(map.HPageSpawns.HPageSpawn)
                 end
             end)
         end
@@ -53,14 +48,7 @@ game:GetService("UserInputService").InputBegan:connect(function(input)
             spawn(function()
                 for _,gens in pairs(generators:GetChildren()) do
                     if gens.GLOW.On.Visible == false then
-                        local highlight = Instance.new("BoxHandleAdornment",gens)
-                        highlight.Name = "SHHighlight"
-                        highlight.Adornee = gens.GENBASE
-                        highlight.ZIndex = 10
-                        highlight.AlwaysOnTop = true
-                        highlight.Size = gens.GENBASE.Size
-                        highlight.Color3 = Color3.fromRGB(255,27,100)
-                        highlight.Transparency = 0.3
+                        Highlight(gens)
                     end
                 end
             end)
