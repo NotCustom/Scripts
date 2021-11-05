@@ -1,6 +1,8 @@
+-- i have a backup of this in the event that it doesn't work
+-- will test later
 local plr = game.Players.LocalPlayer
 local uis = game:GetService("UserInputService")
-loadstring(game:HttpGet()) -- summons the great old ones via table containing all the maps
+loadstring(game:HttpGet("https://raw.githubusercontent.com/NotCustom/Scripts/master/Resource/FtF_Maps.lua"))() -- summons the great old ones via table containing all the maps
 Key = "X"
 uis.InputBegan:connect(function(input)
     if input.KeyCode == Enum.KeyCode[Key] then 
