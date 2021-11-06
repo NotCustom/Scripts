@@ -12,10 +12,10 @@ local settings = {
 }
 _G.Add = function(ore)
     table.insert(_G.ores, tostring(ore))
-end)
+end
 _G.Remove = function(ore)
     table.remove(ore, table.find(ores, tostring(ore)))
-end)
+end
 function Highlight(ore)
     local highlight = Instance.new("BoxHandleAdornment", ore)
     highlight.Adornee = ore
