@@ -44,5 +44,6 @@ _G.OreColours = {
     ["Sinistyte M"] = Color3.fromRGB(255, 138, 55),
     ["Sinistyte L"] = Color3.fromRGB(138, 84, 255),
     ["Sinistyte S"] = Color3.fromRGB(70, 173, 65),
-    ["Sinistyte E"] = Color3.fromRGB(255, 126, 245)
+    ["Sinistyte E"] = Color3.fromRGB(255, 126, 245),
+    ["Element V"] = Color3.fromRGB(35, 21, 79) -- why?
 }
