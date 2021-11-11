@@ -1,10 +1,12 @@
-local plr = game.Players.LocalPlayer
-local uis = game:GetService("UserInputService")
+plr = game.Players.LocalPlayer
+uis = game:GetService("UserInputService")
 Key = "X"
+Map = game.ReplicatedStorage.CurrentMap.Value
+
 uis.InputBegan:connect(function(input)
     if input.KeyCode == Enum.KeyCode[Key] then 
         local pos = {}
-        local map = workspace:FindFirstChild("Facility_0 by MrWindy") or workspace:FindFirstChild("Abandoned Prison by AtomixKing and Duck_Ify") or workspace:FindFirstChild("Abandoned Facility by iiGalaxyKoala, Vexhins, and cyrda") or workspace:FindFirstChild("Airport by deadlybones28") or workspace:FindFirstChild("Homestead by MrWindy") or workspace:FindFirstChild("The Library by Drainhp")
+        local map = workspace:FindFirstChild(Map)
         if map then
             for _,things in pairs(map:GetChildren()) do
                 if things.Name == "FreezePod" then
