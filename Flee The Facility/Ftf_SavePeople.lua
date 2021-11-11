@@ -1,12 +1,11 @@
 plr = game.Players.LocalPlayer
 uis = game:GetService("UserInputService")
 Key = "X"
-Map = game.ReplicatedStorage.CurrentMap.Value
 
 uis.InputBegan:connect(function(input)
     if input.KeyCode == Enum.KeyCode[Key] then 
         local pos = {}
-        local map = workspace:FindFirstChild(Map)
+        local map = workspace:FindFirstChild(tostring(game.ReplicatedStorage.CurrentMap.Value))
         if map then
             for _,things in pairs(map:GetChildren()) do
                 if things.Name == "FreezePod" then
