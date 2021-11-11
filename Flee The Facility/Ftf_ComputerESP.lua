@@ -6,7 +6,7 @@ Map = game.ReplicatedStorage.CurrentMap.Value
 -- Main stuff
 uis.InputBegan:connect(function(input)
     if input.KeyCode == Enum.KeyCode[Key] then
-        local map = workspace:FindFirstChild("Facility_0 by MrWindy") or workspace:FindFirstChild("Abandoned Prison by AtomixKing and Duck_Ify") or workspace:FindFirstChild("Abandoned Facility by iiGalaxyKoala, Vexhins, and cyrda") or workspace:FindFirstChild("Airport by deadlybones28") or workspace:FindFirstChild("Homestead by MrWindy") or workspace:FindFirstChild("The Library by Drainhp") 
+        local map = workspace:FindFirstChild(Map)
         if map then
             spawn(function()
                 for _,stuffs in pairs(map:GetChildren()) do
