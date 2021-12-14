@@ -35,19 +35,19 @@ uis.InputBegan:connect(function(input)
     end
 end)
 
-game.ReplicatedStorage.TimeRemaining.Value.Changed:connect(function(value)
-    if value > 0 and game.ReplicatedStorage.IsGameActive.Value == true then
+while wait(15) do -- adjust if needed
+    if game.ReplicatedStorage.IsGameActive.Value == true then
         local cmap = workspace:FindFirstChild(tostring(game.ReplicatedStorage.CurrentMap.Value))
-        if cmap then
-            for _,stuff in pairs(cmap:GetChildren()) do
-                if stuff.Name == "ComputerTable" then
-                    if stuff.Screen.Color == Color3.fromRGB(40, 127, 71) then
-                        if stuff:FindFirstChild("MDSHighlight") then
-                            stuff.MDSHighlight:Destroy()
-                        end
-                    end
-                end
-            end
-        end
+		if cmap then
+			for _,stuff in pairs(cmap:GetChildren()) do
+				if stuff.Name == "ComputerTable" then
+					if stuff.Screen.Color == Color3.fromRGB(40, 127, 71) then
+						if stuff:FindFirstChild("MDSHighlight") then
+							stuff.MDSHighlight:Destroy()
+						end
+					end
+				end
+			end
+		end
     end
-end)
+end
