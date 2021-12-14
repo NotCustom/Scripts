@@ -36,7 +36,7 @@ uis.InputBegan:connect(function(input)
 end)
 
 game.ReplicatedStorage.TimeRemaining.Value.Changed:connect(function(value)
-    if value > 0 and game.ReplicatedStorage.IsGameActive.Value == true then -- Round is 15m/900seconds, so 885 seconds minus the headstart
+    if value > 0 and game.ReplicatedStorage.IsGameActive.Value == true then
         local cmap = workspace:FindFirstChild(tostring(game.ReplicatedStorage.CurrentMap.Value))
         if cmap then
             for _,stuff in pairs(cmap:GetChildren()) do
