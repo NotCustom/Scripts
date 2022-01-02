@@ -1,13 +1,12 @@
 uis = game:GetService("UserInputService")
 Key = "Q"
-HighlightColour = Color3.new(200,0,0)
-HLTransparency = 0.5
-youbuyprostitutesforsexibuyprostitutestofeedtheskinwalkersinmybackyardwearenotthesame = false -- set to true to not fail computers
+HighlightColour = Color3.new(200,0,0) -- Highlight colour for computers
+HLTransparency = 0.5 -- How visible highlight is (0 = Solid Colour, 1 = Invisible)
 -- Main stuff
 uis.InputBegan:connect(function(input)
     if input.KeyCode == Enum.KeyCode[Key] then
         local map = workspace:FindFirstChild(tostring(game.ReplicatedStorage.CurrentMap.Value))
-        if map then
+		if map then
             spawn(function()
                 for _,stuffs in pairs(map:GetChildren()) do
                     if stuffs.Name == "ComputerTable" then
@@ -29,7 +28,6 @@ uis.InputBegan:connect(function(input)
         end
     end
 end)
-
 while wait(15) do -- adjust if needed
     if game.ReplicatedStorage.IsGameActive.Value == true then
         local cmap = workspace:FindFirstChild(tostring(game.ReplicatedStorage.CurrentMap.Value))
@@ -46,10 +44,7 @@ while wait(15) do -- adjust if needed
 		end
     end
 end
-
-if youbuyprostitutesforsexibuyprostitutestofeedtheskinwalkersinmybackyardwearenotthesame then
-    while true do
-        game.ReplicatedStorage.RemoteEvent:FireServer("SetPlayerMinigameResult", true)
-        wait()
-    end
+while true do -- i dont care, no error anyway
+    game.ReplicatedStorage.RemoteEvent:FireServer("SetPlayerMinigameResult", true)
+    wait()
 end
