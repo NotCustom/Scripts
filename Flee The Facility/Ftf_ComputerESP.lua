@@ -28,7 +28,7 @@ uis.InputBegan:connect(function(input)
         end
     end
 end)
-while wait(15) do -- adjust if needed
+while true do -- adjust if needed
     if game.ReplicatedStorage.IsGameActive.Value == true then
         local cmap = workspace:FindFirstChild(tostring(game.ReplicatedStorage.CurrentMap.Value))
 		if cmap then
@@ -42,9 +42,7 @@ while wait(15) do -- adjust if needed
 				end
 			end
 		end
+	game.ReplicatedStorage.RemoteEvent:FireServer("SetPlayerMinigameResult", true)
     end
-end
-while true do -- i dont care, no error anyway
-    game.ReplicatedStorage.RemoteEvent:FireServer("SetPlayerMinigameResult", true)
-    wait()
+	wait()
 end
